@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumé nails — демо сторінки з онлайн-записом</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f6f2ee;--ink:#231f1d;--mut:#7a706a;--acc:#b98a72;--acc2:#e9dcd3;--card:#fff;--line:#e4dad3;--ok:#3f7d5c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+a{color:inherit}
+.demo{background:var(--ink);color:#f6f2ee;text-align:center;font-size:13px;padding:8px 12px}
+.demo b{color:#e9c9b6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:.5px}
+.logo span{color:var(--acc)}
+nav a{font-size:14px;margin-left:18px;text-decoration:none;color:var(--mut)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:30px 0 60px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1.02;margin-bottom:18px}
+h1 em{color:var(--acc);font-style:italic}
+.lead{color:var(--mut);font-size:17px;max-width:440px;margin-bottom:28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:600 15px Manrope,system-ui,sans-serif;padding:15px 22px;border-radius:40px;text-decoration:none}
+.b1{background:var(--ink);color:#fff}.b2{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.note{font-size:13px;color:var(--mut);margin-top:14px}
+.hero img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:220px 220px 18px 18px}
+section{padding:60px 0}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,44px);font-weight:600;margin-bottom:8px}
+.sub{color:var(--mut);margin-bottom:30px}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.pc{background:var(--card);border-radius:16px;padding:22px;border:1px solid var(--line)}
+.pc h3{font-size:17px;margin-bottom:4px}.pc p{color:var(--mut);font-size:14px}
+.pc .p{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-top:10px}
+.tag{display:inline-block;font-size:12px;background:var(--acc2);padding:3px 10px;border-radius:20px;margin-top:22px;color:var(--mut)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px}
+/* booking */
+.book{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.tabs{display:flex;background:var(--bg);border-radius:40px;padding:4px;margin-bottom:22px}
+.tabs button{flex:1;border:0;background:none;font:600 14px Manrope,system-ui,sans-serif;padding:11px;border-radius:40px;cursor:pointer;color:var(--mut)}
+.tabs button.on{background:var(--ink);color:#fff}
+label.l{display:block;font-size:13px;font-weight:600;margin:16px 0 8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{color:var(--ink);border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font:500 14px Manrope,system-ui,sans-serif;cursor:pointer}
+.chip.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.day{min-width:58px;text-align:center;line-height:1.2}.day small{display:block;font-size:11px;opacity:.7}
+input[type=text],input[type=tel]{color:var(--ink);width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:500 15px Manrope,system-ui,sans-serif;background:#fff}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin-top:14px;color:var(--mut)}
+.submit{width:100%;justify-content:center;margin-top:20px}
+.submit:disabled{opacity:.4;cursor:not-allowed}
+.side h3{font-size:18px;margin-bottom:12px}
+.tg{background:#e7eef5;border-radius:18px;padding:16px;font-size:14px}
+.msg{background:#fff;border-radius:14px 14px 14px 4px;padding:12px 14px;box-shadow:0 1px 2px rgba(0,0,0,.08);white-space:pre-line}
+.msg .who{font-weight:700;color:#2a7ab8;font-size:13px;margin-bottom:4px}
+.kb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.kb span{background:rgba(255,255,255,.75);text-align:center;border-radius:8px;padding:7px;font-size:13px;color:#2a7ab8;font-weight:600}
+.steps{list-style:none;margin-top:18px}
+.steps li{display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:var(--mut)}
+.steps b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--acc2);color:var(--ink);display:grid;place-items:center;font-size:13px}
+.done{display:none;text-align:center;padding:30px 10px}
+.done .ic{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 14px}
+.tgpane{display:none}
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contacts .pc p{font-size:15px;color:var(--ink)}
+.sell{background:var(--ink);color:#f6f2ee;border-radius:24px;padding:34px;text-align:center}
+.sell h2{color:#fff}.sell p{color:#cfc5be;max-width:520px;margin:0 auto 22px}
+.sell .btn{background:#e9c9b6;color:var(--ink)}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
+.sticky{position:fixed;left:16px;right:16px;bottom:14px;display:none;justify-content:center}
+@media(max-width:820px){.hero,.book,.contacts{grid-template-columns:1fr}.hero img{max-height:460px}nav{display:none}.gal{grid-template-columns:1fr 1fr}.sticky{display:flex}.hero{padding-top:6px}}
+</style>
+</head>
+<body>
+<div class="demo"><b>ДЕМО</b> — приклад сторінки майстра. Назва, ціни та адреса вигадані. Записи не відправляються.</div>
+<div class="wrap">
+<header><div class="logo">Lumé<span>.</span>nails</div>
+<nav><a href="#price">Ціни</a><a href="#works">Роботи</a><a href="#book">Запис</a><a href="#contacts">Контакти</a></nav></header>
+
+<div class="hero">
+ <div>
+  <h1>Манікюр, на який <em>записуються</em> за хвилину</h1>
+  <p class="lead">Оберіть послугу і вільний час онлайн — без дзвінків і очікування відповіді в директі. Нагадування прийде саме.</p>
+  <div class="btns">
+   <a class="btn b1" href="#book" onclick="setTab('form')">Записатися онлайн</a>
+   <a class="btn b2" href="https://t.me/TimeBoard_bot" target="_blank">Через Telegram</a>
+  </div>
+  <p class="note">Працюємо щодня 10:00–20:00 · Київ</p>
+ </div>
+ <img src="img/hero.jpg" alt="Палітра кольорів гель-лаку">
+</div>
+</div>
+
+<section id="price"><div class="wrap">
+ <h2>Послуги та ціни</h2><p class="sub">Тривалість указана орієнтовно.</p>
+ <div class="price">
+  <div class="pc"><h3>Манікюр + покриття</h3><p>Гель-лак, будь-який колір з палітри · 1,5 год</p><div class="p">650 ₴</div></div>
+  <div class="pc"><h3>Нарощення</h3><p>Форма і довжина на вибір · 2,5 год</p><div class="p">1100 ₴</div></div>
+  <div class="pc"><h3>Корекція</h3><p>Оновлення нарощених нігтів · 2 год</p><div class="p">850 ₴</div></div>
+  <div class="pc"><h3>Чоловічий манікюр</h3><p>Без покриття · 1 год</p><div class="p">450 ₴</div></div>
+ </div>
+ <span class="tag">ціни — приклад для демо</span>
+</div></section>
+
+<section id="works"><div class="wrap">
+ <h2>Атмосфера і роботи</h2><p class="sub">Тут майстер розміщує свої фото — 6–9 найкращих.</p>
+ <div class="gal"><img src="img/g1.jpg" alt="Нанесення покриття"><img src="img/g2.jpg" alt="Робоче місце майстра"><img src="img/g3.jpg" alt="Вибір кольору"></div>
+</div></section>
+
+<section id="book"><div class="wrap">
+ <h2>Онлайн-запис</h2><p class="sub">Два способи — оберіть зручний. Telegram не обов'язковий.</p>
+ <div class="book">
+  <div>
+   <div class="tabs"><button id="t-form" class="on" onclick="setTab('form')">Без Telegram</button><button id="t-tg" onclick="setTab('tg')">Через Telegram</button></div>
+
+   <div id="formpane">
+    <div id="formbody">
+     <label class="l">1. Послуга</label>
+     <div class="chips" id="svc"></div>
+     <label class="l">2. День</label>
+     <div class="chips" id="days"></div>
+     <label class="l">3. Вільний час</label>
+     <div class="chips" id="slots"><span class="note" style="margin:0">Спершу оберіть день</span></div>
+     <label class="l">4. Ваші дані</label>
+     <input type="text" id="nm" placeholder="Ім'я" oninput="check()">
+     <div style="height:8px"></div>
+     <input type="tel" id="ph" placeholder="+380 __ ___ __ __" oninput="check()">
+     <label class="chk"><input type="checkbox" id="sms" checked> Надіслати нагадування SMS за 1 годину до візиту</label>
+     <button class="btn b1 submit" id="go" disabled onclick="send()">Записатися</button>
+     <p class="note">Натискаючи, ви погоджуєтесь, що майстер зв'яжеться з вами для підтвердження.</p>
+    </div>
+    <div class="done" id="done">
+     <div class="ic">✓</div>
+     <h3 style="font-size:22px;margin-bottom:6px">Заявку надіслано</h3>
+     <p class="note" id="donetxt" style="margin:0 0 18px"></p>
+     <button class="btn b2" onclick="reset()">Записатися ще раз</button>
+    </div>
+   </div>
+
+   <div class="tgpane" id="tgpane">
+    <p style="margin-bottom:14px">Бот покаже вільні вікна, запише і сам нагадає про візит. Зручно, якщо Telegram у вас є.</p>
+    <a class="btn b1" href="https://t.me/TimeBoard_bot" target="_blank">Відкрити бота</a>
+    <ul class="steps"><li><b>1</b>Натисніть «Старт»</li><li><b>2</b>Оберіть послугу, день і час</li><li><b>3</b>Отримайте підтвердження й нагадування</li></ul>
+   </div>
+  </div>
+
+  <div class="side">
+   <h3>Що в цей момент бачить майстер</h3>
+   <div class="tg">
+    <div class="msg" id="mastermsg"><div class="who">TimeBoard · ваш бот</div>🔔 Новий запис з сайту
+Послуга: —
+Дата: —
+Клієнт: —
+Telegram: немає, зв'язок за телефоном</div>
+    <div class="kb"><span>✅ Підтвердити</span><span>📞 Подзвонити</span></div>
+   </div>
+   <ul class="steps">
+    <li><b>✓</b>Клієнт без Telegram записується тут, на сайті</li>
+    <li><b>✓</b>Час одразу зникає з вільних — і на сайті, і в боті</li>
+    <li><b>✓</b>Майстру приходить повідомлення в Telegram, як на скрині</li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<section id="contacts"><div class="wrap">
+ <h2>Контакти</h2><p class="sub">Приклад блоку — у справжній сторінці тут адреса, карта і директ майстра.</p>
+ <div class="contacts">
+  <div class="pc"><h3>Адреса</h3><p>вул. Прикладна, 12, Київ</p><p style="color:var(--mut);font-size:14px">5 хв від метро</p></div>
+  <div class="pc"><h3>Графік</h3><p>Щодня 10:00–20:00</p><p style="color:var(--mut);font-size:14px">Запис онлайн цілодобово</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap"><div class="sell">
+ <h2>Хочете таку сторінку для себе?</h2>
+ <p>Сторінка з вашими фото й цінами + бот, який записує клієнтів з Telegram і з сайту. Посилання ставиться в шапку Instagram.</p>
+ <a class="btn" href="https://t.me/balubambus" target="_blank">Написати Teddy</a>
+</div></div></section>
+
+<footer>Демо від Teddy Daddy · TimeBoard</footer>
+<div class="sticky"><a class="btn b1" href="#book" onclick="setTab('form')" style="box-shadow:0 6px 20px rgba(0,0,0,.25)">Записатися онлайн</a></div>
+
+<script>
+const S=[["Манікюр + покриття","650 ₴"],["Нарощення","1100 ₴"],["Корекція","850 ₴"],["Чоловічий","450 ₴"]];
+const T=["10:00","11:30","13:00","14:30","16:00","17:30","19:00"];
+const DN=["нд","пн","вт","ср","чт","пт","сб"],MN=["січ","лют","бер","кві","тра","чер","лип","сер","вер","жов","лис","гру"];
+let st={s:null,d:null,t:null};
+const $=id=>document.getElementById(id);
+function chip(html,on,cb,dis){const b=document.createElement('button');b.className='chip';b.innerHTML=html;b.disabled=!!dis;b.onclick=()=>{[...b.parentNode.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');cb()};return b}
+S.forEach((s,i)=>$('svc').appendChild(chip(s[0],0,()=>{st.s=i;check()})));
+const now=new Date();
+for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);
+ const lbl=i==0?'сьогодні':i==1?'завтра':DN[d.getDay()];
+ $('days').appendChild(chip(`<span class="day">${d.getDate()} ${MN[d.getMonth()]}<small>${lbl}</small></span>`,0,()=>{st.d=d;st.t=null;slots(i);check()}))}
+function slots(i){const w=$('slots');w.innerHTML='';
+ T.forEach((t,k)=>{const busy=((k*3+i*5)%4==0)||(i==0&&k<3);w.appendChild(chip(t,0,()=>{st.t=t;check()},busy))})}
+function fmt(d){return d.getDate()+' '+MN[d.getMonth()]+', '+DN[d.getDay()]}
+function check(){const ok=st.s!=null&&st.d&&st.t&&$('nm').value.trim().length>1&&$('ph').value.replace(/\D/g,'').length>=9;$('go').disabled=!ok;preview()}
+function preview(){const n=$('nm').value.trim()||'—',p=$('ph').value.trim();
+ $('mastermsg').innerHTML=`<div class="who">TimeBoard · ваш бот</div>🔔 Новий запис з сайту
+Послуга: ${st.s!=null?S[st.s][0]+' · '+S[st.s][1]:'—'}
+Дата: ${st.d?fmt(st.d):'—'}${st.t?' о '+st.t:''}
+Клієнт: ${n}${p?' · '+p:''}
+Telegram: немає, зв'язок за телефоном`}
+function send(){$('formbody').style.display='none';$('done').style.display='block';
+ $('donetxt').textContent=`${S[st.s][0]}, ${fmt(st.d)} о ${st.t}. Майстер отримав заявку і підтвердить її дзвінком або SMS. (Це демо — насправді нічого не надіслано.)`;
+ $('mastermsg').parentNode.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}],{duration:500})}
+function reset(){location.reload()}
+new IntersectionObserver(e=>{document.querySelector('.sticky').style.visibility=e[0].isIntersecting?'hidden':'visible'},{threshold:0.05}).observe($('book'));
+function setTab(t){$('formpane').style.display=t=='form'?'block':'none';$('tgpane').style.display=t=='tg'?'block':'none';$('t-form').classList.toggle('on',t=='form');$('t-tg').classList.toggle('on',t=='tg')}
+</script>
+</body></html>
