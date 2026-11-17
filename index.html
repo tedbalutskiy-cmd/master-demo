@@ -75,7 +75,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
 </style>
 </head>
 <body>
-<div class="demo"><b>ДЕМО</b> — приклад сторінки майстра. Назва, ціни та адреса вигадані. Записи не відправляються.</div>
+<div class="demo"><b>ДЕМО</b> — приклад сторінки майстра. Назва, ціни та адреса вигадані. Запис справжній: він потрапляє в демо-групу майстра в Telegram.</div>
 <div class="wrap">
 <header><div class="logo">Lumé<span>.</span>nails</div>
 <nav><a href="#price">Ціни</a><a href="#works">Роботи</a><a href="#book">Запис</a><a href="#contacts">Контакти</a></nav></header>
@@ -83,12 +83,12 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
 <div class="hero">
  <div>
   <h1>Манікюр, на який <em>записуються</em> за хвилину</h1>
-  <p class="lead">Оберіть послугу і вільний час онлайн — без дзвінків і очікування відповіді в директі. Нагадування прийде саме.</p>
+  <p class="lead">Оберіть послугу і вільний час онлайн — без дзвінків і очікування відповіді в директі. Через Telegram-бота — ще й з нагадуванням.</p>
   <div class="btns">
    <a class="btn b1" href="#book" onclick="setTab('form')">Записатися онлайн</a>
    <a class="btn b2" href="https://t.me/TimeBoard_bot" target="_blank">Через Telegram</a>
   </div>
-  <p class="note">Працюємо щодня 10:00–20:00 · Київ</p>
+  <p class="note">Працюємо щодня 09:00–19:00 · Київ</p>
  </div>
  <img src="img/hero.jpg" alt="Палітра кольорів гель-лаку">
 </div>
@@ -121,20 +121,21 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
      <label class="l">1. Послуга</label>
      <div class="chips" id="svc"></div>
      <label class="l">2. День</label>
-     <div class="chips" id="days"></div>
+     <div class="chips" id="days"><span class="note" style="margin:0">Завантажуємо вільні дні…</span></div>
      <label class="l">3. Вільний час</label>
      <div class="chips" id="slots"><span class="note" style="margin:0">Спершу оберіть день</span></div>
      <label class="l">4. Ваші дані</label>
      <input type="text" id="nm" placeholder="Ім'я" oninput="check()">
      <div style="height:8px"></div>
      <input type="tel" id="ph" placeholder="+380 __ ___ __ __" oninput="check()">
-     <label class="chk"><input type="checkbox" id="sms" checked> Надіслати нагадування SMS за 1 годину до візиту</label>
+     <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><input type="text" id="hpx" name="hpx" tabindex="-1" autocomplete="off"></div>
      <button class="btn b1 submit" id="go" disabled onclick="send()">Записатися</button>
-     <p class="note">Натискаючи, ви погоджуєтесь, що майстер зв'яжеться з вами для підтвердження.</p>
+     <p class="note" id="err" style="color:#b0413e;display:none"></p>
+     <p class="note">Ім'я та телефон бачить лише майстер. Нагадування без Telegram не надходить — збережіть дату й час. Якщо щось зміниться, майстер зателефонує.</p>
     </div>
     <div class="done" id="done">
      <div class="ic">✓</div>
-     <h3 style="font-size:22px;margin-bottom:6px">Заявку надіслано</h3>
+     <h3 style="font-size:22px;margin-bottom:6px">Ви записані</h3>
      <p class="note" id="donetxt" style="margin:0 0 18px"></p>
      <button class="btn b2" onclick="reset()">Записатися ще раз</button>
     </div>
@@ -150,17 +151,15 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
   <div class="side">
    <h3>Що в цей момент бачить майстер</h3>
    <div class="tg">
-    <div class="msg" id="mastermsg"><div class="who">TimeBoard · ваш бот</div>🔔 Новий запис з сайту
-Послуга: —
-Дата: —
-Клієнт: —
-Telegram: немає, зв'язок за телефоном</div>
-    <div class="kb"><span>✅ Підтвердити</span><span>📞 Подзвонити</span></div>
+    <div class="msg" id="mastermsg"><div class="who">TimeBoard · ваш бот</div>🆕 Новий запис з сайту: —
+—
+💅 —
+📞 —</div>
    </div>
    <ul class="steps">
     <li><b>✓</b>Клієнт без Telegram записується тут, на сайті</li>
     <li><b>✓</b>Час одразу зникає з вільних — і на сайті, і в боті</li>
-    <li><b>✓</b>Майстру приходить повідомлення в Telegram, як на скрині</li>
+    <li><b>✓</b>Майстру приходить повідомлення в Telegram, як на скрині, а запис з'являється в його таблиці</li>
    </ul>
   </div>
  </div>
@@ -170,7 +169,7 @@ Telegram: немає, зв'язок за телефоном</div>
  <h2>Контакти</h2><p class="sub">Приклад блоку — у справжній сторінці тут адреса, карта і директ майстра.</p>
  <div class="contacts">
   <div class="pc"><h3>Адреса</h3><p>вул. Прикладна, 12, Київ</p><p style="color:var(--mut);font-size:14px">5 хв від метро</p></div>
-  <div class="pc"><h3>Графік</h3><p>Щодня 10:00–20:00</p><p style="color:var(--mut);font-size:14px">Запис онлайн цілодобово</p></div>
+  <div class="pc"><h3>Графік</h3><p>Щодня 09:00–19:00</p><p style="color:var(--mut);font-size:14px">Запис онлайн цілодобово</p></div>
  </div>
 </div></section>
 
@@ -184,31 +183,57 @@ Telegram: немає, зв'язок за телефоном</div>
 <div class="sticky"><a class="btn b1" href="#book" onclick="setTab('form')" style="box-shadow:0 6px 20px rgba(0,0,0,.25)">Записатися онлайн</a></div>
 
 <script>
-const S=[["Манікюр + покриття","650 ₴"],["Нарощення","1100 ₴"],["Корекція","850 ₴"],["Чоловічий","450 ₴"]];
-const T=["10:00","11:30","13:00","14:30","16:00","17:30","19:00"];
+// Адреса API бота TimeBoard (Railway). Змінити тут, якщо бот переїде.
+const API='https://meticulous-empathy-production-30218e2f.up.railway.app';
+const S=[["Манікюр + покриття","650 ₴"],["Нарощення","1100 ₴"],["Корекція","850 ₴"],["Чоловічий манікюр","450 ₴"]];
 const DN=["нд","пн","вт","ср","чт","пт","сб"],MN=["січ","лют","бер","кві","тра","чер","лип","сер","вер","жов","лис","гру"];
-let st={s:null,d:null,t:null};
+let st={s:null,d:null,t:null},DAYS=[],busy=false;
 const $=id=>document.getElementById(id);
-function chip(html,on,cb,dis){const b=document.createElement('button');b.className='chip';b.innerHTML=html;b.disabled=!!dis;b.onclick=()=>{[...b.parentNode.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');cb()};return b}
-S.forEach((s,i)=>$('svc').appendChild(chip(s[0],0,()=>{st.s=i;check()})));
-const now=new Date();
-for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);
- const lbl=i==0?'сьогодні':i==1?'завтра':DN[d.getDay()];
- $('days').appendChild(chip(`<span class="day">${d.getDate()} ${MN[d.getMonth()]}<small>${lbl}</small></span>`,0,()=>{st.d=d;st.t=null;slots(i);check()}))}
-function slots(i){const w=$('slots');w.innerHTML='';
- T.forEach((t,k)=>{const busy=((k*3+i*5)%4==0)||(i==0&&k<3);w.appendChild(chip(t,0,()=>{st.t=t;check()},busy))})}
+function chip(html,on,cb,dis){const b=document.createElement('button');b.className='chip'+(on?' on':'');b.innerHTML=html;b.disabled=!!dis;b.onclick=()=>{[...b.parentNode.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');cb()};return b}
+function note(el,text){$(el).innerHTML='';const n=document.createElement('span');n.className='note';n.style.margin='0';n.textContent=text;$(el).appendChild(n)}
+function err(text){$('err').textContent=text||'';$('err').style.display=text?'block':'none'}
+function dt(iso){const [y,m,d]=iso.split('-').map(Number);return new Date(y,m-1,d)}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function fmt(d){return d.getDate()+' '+MN[d.getMonth()]+', '+DN[d.getDay()]}
-function check(){const ok=st.s!=null&&st.d&&st.t&&$('nm').value.trim().length>1&&$('ph').value.replace(/\D/g,'').length>=9;$('go').disabled=!ok;preview()}
-function preview(){const n=$('nm').value.trim()||'—',p=$('ph').value.trim();
- $('mastermsg').innerHTML=`<div class="who">TimeBoard · ваш бот</div>🔔 Новий запис з сайту
-Послуга: ${st.s!=null?S[st.s][0]+' · '+S[st.s][1]:'—'}
-Дата: ${st.d?fmt(st.d):'—'}${st.t?' о '+st.t:''}
-Клієнт: ${n}${p?' · '+p:''}
-Telegram: немає, зв'язок за телефоном`}
-function send(){$('formbody').style.display='none';$('done').style.display='block';
- $('donetxt').textContent=`${S[st.s][0]}, ${fmt(st.d)} о ${st.t}. Майстер отримав заявку і підтвердить її дзвінком або SMS. (Це демо — насправді нічого не надіслано.)`;
- $('mastermsg').parentNode.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}],{duration:500})}
+function end(t,step){const [h,m]=t.split(':').map(Number),x=h*60+m+step;return String(Math.floor(x/60)%24).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}
+S.forEach((s,i)=>$('svc').appendChild(chip(s[0],0,()=>{st.s=i;check()})));
+async function load(keep){
+ try{const r=await fetch(API+'/api/slots?days=7');const j=await r.json();if(!r.ok||!j.ok)throw 0;DAYS=j.days}
+ catch(e){note('days','Не вдалося завантажити вільний час. Спробуйте пізніше або запишіться через Telegram.');note('slots','—');return}
+ const today=iso(new Date()),tom=iso(new Date(Date.now()+864e5));
+ $('days').innerHTML='';
+ if(!DAYS.length){note('days','Найближчими днями вільного часу немає. Запишіться через Telegram або спробуйте пізніше.');return}
+ DAYS.forEach(x=>{const d=dt(x.day),lbl=x.day==today?'сьогодні':x.day==tom?'завтра':DN[d.getDay()];
+  $('days').appendChild(chip(`<span class="day">${d.getDate()} ${MN[d.getMonth()]}<small>${lbl}</small></span>`,keep&&st.d&&st.d.day==x.day,()=>{st.d=x;st.t=null;slots();check()},!x.slots.length))});
+ if(keep&&st.d){st.d=DAYS.find(x=>x.day==st.d.day)||null;st.t=null;st.d?slots():note('slots','Спершу оберіть день')}
+ check()}
+function slots(){const w=$('slots');w.innerHTML='';
+ if(!st.d.slots.length){note('slots','На цей день вільного часу немає');return}
+ st.d.slots.forEach(t=>w.appendChild(chip(t,0,()=>{st.t=t;check()})))}
+function check(){const ok=st.s!=null&&st.d&&st.t&&$('nm').value.trim().length>1&&$('ph').value.replace(/\D/g,'').length>=9;$('go').disabled=!ok||busy;preview()}
+function when(){return st.d?fmt(dt(st.d.day))+(st.t?', '+st.t+'–'+end(st.t,st.d.step):''):'—'}
+function preview(){const n=$('nm').value.trim()||'—',p=$('ph').value.trim()||'—';
+ $('mastermsg').innerHTML='';const w=document.createElement('div');w.className='who';w.textContent='TimeBoard · ваш бот';
+ $('mastermsg').appendChild(w);$('mastermsg').appendChild(document.createTextNode(`🆕 Новий запис з сайту: ${n}
+${when()}
+💅 ${st.s!=null?S[st.s][0]:'—'}
+📞 ${p}`))}
+const ERR={taken:'Цей час щойно зайняли. Оберіть інший — список оновлено.',past:'Цей час уже минув. Оберіть інший.',closed:'На цей день запис закрито. Оберіть інший день.',
+ bad_slot:'Такого часу немає в графіку. Оберіть інший.',limit:'Забагато спроб. Спробуйте за годину або запишіться через Telegram.',bad:'Перевірте ім\'я та телефон.'};
+async function send(){if(busy)return;busy=true;err('');$('go').textContent='Надсилаємо…';check();
+ let j={},r=null;
+ try{r=await fetch(API+'/api/book',{method:'POST',headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({day:st.d.day,slot:st.t,name:$('nm').value.trim(),phone:$('ph').value.trim(),service:S[st.s][0],website:$('hpx').value})});
+  j=await r.json()}catch(e){j={error:'net'}}
+ busy=false;$('go').textContent='Записатися';
+ if(r&&r.ok&&j.ok){$('formbody').style.display='none';$('done').style.display='block';
+  $('donetxt').textContent=`${S[st.s][0]}, ${when()}. Майстер отримав запис у Telegram. Нагадування без Telegram не надходить — збережіть дату й час.`;
+  $('mastermsg').parentNode.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}],{duration:500});return}
+ err(ERR[j.error]||'Не вдалося записатися. Спробуйте ще раз або запишіться через Telegram.');
+ if(['taken','past','closed','bad_slot'].includes(j.error))await load(true);
+ check()}
 function reset(){location.reload()}
+load(false);
 new IntersectionObserver(e=>{document.querySelector('.sticky').style.visibility=e[0].isIntersecting?'hidden':'visible'},{threshold:0.05}).observe($('book'));
 function setTab(t){$('formpane').style.display=t=='form'?'block':'none';$('tgpane').style.display=t=='tg'?'block':'none';$('t-form').classList.toggle('on',t=='form');$('t-tg').classList.toggle('on',t=='tg')}
 </script>
